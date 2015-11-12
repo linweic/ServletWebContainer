@@ -1,24 +1,32 @@
-Full name:  ______________
-SEAS login: ______________
+Full name:  _Linwei Chen_____________
+SEAS login: _____linweic_________
 
 Which features did you implement? 
   (list features, or write 'Entire assignment')
-
+	1, constructed a HTTP server compliant to both 1.0 and 1.1 version
+	2, return a list of subfiles when a directory is requested
+	3, return correct MIME types for some basic file formats. based on given extensions.
+	4, only support GET and HEAD method, other request methods will be return with error response 
+	5, handle multiple HTTP error responses to client
+	6, implemented special urls like /shutdown to shutdown the server gracefully and /control to return a control page
+		When you type in "http://localhost:8080/shutdown", probably there is no reaction for the first time you tap "enter", second time it works, which is strange and I cannot tell the reason.
+	7, respond interim message 100 continue when "Expect" header is detected
+	8, handle "If-Modified-Since" and "If-Unmodified-Since" from client request
 Did you complete any extra-credit tasks? If so, which ones?
   (list extra-credit tasks)
 
 Any special instructions for building and running your solution?
   (include detailed instructions, or write 'None')
-
+	I used /HW1/www as root directory, all the resource files are in there
 Did you personally write _all_ the code you are submitting
 (other than code from the course web page)?
   [ ] Yes
-  [ ] No
+  [*] No
 
 Did you copy any code from the Internet, or from classmates?
   [ ] Yes
-  [ ] No
+  [*] No
 
 Did you collaborate with anyone on this assignment?
   [ ] Yes
-  [ ] No
+  [*] No
