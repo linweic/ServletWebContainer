@@ -110,21 +110,66 @@ public class WorkerThread extends Thread{
 		return null;
 	}
 	public HttpSession isSessionExist() {
+		removeInvalidSession();
+		logger.debug("check existant sessions...");
+		/*
 		if(headerLines.containsKey("Cookie".toUpperCase())){
 			ArrayList<String> values = headerLines.get("Cookie".toUpperCase());
+			ArrayList<String> new_values = new ArrayList<String>();
+			HttpSession session = null;
 			for(String s : values){
 				if(s.contains("JSESSIONID")){
 					String[] strings = s.split("=");
-					return HttpServer.sessions.get(strings[1]);
+					session = HttpServer.sessions.get(strings[1]);
+					if(session != null){
+						new_values.add(s);
+					}
 				}
+				else new_values.add(s);
+			}
+			headerLines.put("COOKIE", new_values);
+			return session;
+		}
+		*/
+		HttpSession session = null;
+		if(HttpServer.sessions == null) return null;
+		else{
+			for(String key: HttpServer.sessions.keySet()){
+				session = HttpServer.sessions.get(key);
+				StringBuffer sb = new StringBuffer("JSESSIONID");
+				sb.append("=").append(session.getId());
+				ArrayList<String> value = new ArrayList<String>();
+				value.add(sb.toString());
+				headerLines.put("COOKIE", value);
+				break;
+			}
+			return session;
+		}
+	}
+	private void removeInvalidSession(){
+		logger.info("removing invalid session....");
+		for(String key:HttpServer.sessions.keySet()){
+			Date current = new Date();
+			HttpSession hs = HttpServer.sessions.get(key);
+			if(hs.getMaxInactiveInterval()==-1) return;
+			if(current.getTime()- hs.getCreationTime()>(hs.getMaxInactiveInterval()*1000)){
+				logger.debug(key+" session is invalid");
+				hs.invalidate();
+				HttpServer.sessions.remove(key);
+				logger.debug(key+" has been removed");
 			}
 		}
-		return null;
 	}
 	public void startServlet(String[] strings, String servletName, StringBuffer message) throws ServletException, IOException {
 		/*find JSESSIONID*/
 		MySession currentSession = (MySession) isSessionExist();
-		MyRequest request = new MyRequest(currentSession);
+		MyRequest request;
+		if(currentSession != null){
+			request = new MyRequest(currentSession);
+		}
+		else{
+			request = new MyRequest();
+		}
 		for(String k : headerLines.keySet()){
 			ArrayList<String> values = headerLines.get(k);
 			request.setAttribute(k, values);
@@ -137,12 +182,19 @@ public class WorkerThread extends Thread{
 		request.setAttribute("protocol",httpVersion);
 		
 		request.getQueryString();
+		
 		HttpSession hs = request.getSession(true);
+		Date current = new Date();
+		hs.setAttribute("Last-Accessed", current.getTime());
+		hs.setAttribute("Request", request);
 		logger.info(hs.getId());
 		if(hs.isNew() == true) HttpServer.sessions.put(hs.getId(), hs);
+		
 		MyResponse response = new MyResponse();
+		
 		Cookie cookie = new Cookie("JSESSIONID",hs.getId());
 		response.addCookie(cookie);
+		
 		HttpServlet servlet = HttpServer.servlets.get(servletName);
 		logger.info("strings[0] is "+ strings[0]);
 		if(strings[0].equals("GET")){
@@ -152,9 +204,7 @@ public class WorkerThread extends Thread{
 		}
 		else if(strings[0].equals("POST")){
 			logger.info("POST suport...");
-			//logger.debug(message);
 			String[] querys = message.toString().split("\\?|&|=|;|\\s");
-			//logger.debug(querys.length);
 			for(int i = 0; i<querys.length-1; i+=2){
 				logger.debug(querys[i]+"\t"+querys[i+1]);
 				request.setParameter(querys[i],querys[i+1]);

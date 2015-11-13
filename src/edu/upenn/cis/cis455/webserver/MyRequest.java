@@ -235,6 +235,7 @@ class MyRequest implements HttpServletRequest {
 		
 		//String cookie = "Cookie".toUpperCase();
 		if(getAttribute("Cookie")!=null){
+			@SuppressWarnings("unchecked")
 			ArrayList<String> cookieValue = (ArrayList<String>) getAttribute("Cookie");
 			for(String s: cookieValue){
 				if(s.contains("JSESSIONID")){
@@ -274,6 +275,7 @@ class MyRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		StringBuffer sb = new StringBuffer();
 		String method = getMethod();
+		@SuppressWarnings("unchecked")
 		String server = ((ArrayList<String>)getAttribute("Host")).get(0);
 		logger.debug("[getRequestURL] server is "+ server);
 		String serverPath = getRequestURI();
@@ -288,6 +290,7 @@ class MyRequest implements HttpServletRequest {
 	public String getServletPath() {
 		// TODO Auto-generated method stub
 		String url = (String) getAttribute("requestURL");
+		@SuppressWarnings("unchecked")
 		HashMap<String, String> mapping = (HashMap<String, String>) getAttribute("ServletMapping");//HttpServer.h.m_servletsMapping;
 		Collection<String> patterns = mapping.values();
 		int maxLength = 0;
@@ -316,6 +319,7 @@ class MyRequest implements HttpServletRequest {
 	public HttpSession getSession(boolean arg0) {
 		if (arg0) {
 			if (! hasSession()) {
+				logger.info("request does not have a session");
 				m_session = new MySession();
 				m_session.setAttribute("Request", this);
 				m_session.setAttribute("ServletContext", getAttribute("ServletContext"));				
@@ -340,7 +344,7 @@ class MyRequest implements HttpServletRequest {
 	 */
 	public boolean isRequestedSessionIdValid() {
 		// TODO Auto-generated method stub
-		return false;
+		return m_session.isValid();
 	}
 
 	/* (non-Javadoc)
@@ -401,7 +405,7 @@ class MyRequest implements HttpServletRequest {
 	 */
 	public String getCharacterEncoding() {
 		// TODO Auto-generated method stub
-		if(getAttribute("Accept-Charset")!=null) return ((ArrayList<String>)getAttribute("Accept-Charset")).get(0);
+		if(getAttribute("Accept-Charset")!=null) return (String)getAttribute("Accept-Charset");
 		else return "ISO-8859-1";
 	}
 
@@ -653,7 +657,7 @@ class MyRequest implements HttpServletRequest {
 	}
 	
 	boolean hasSession() {
-		return ((m_session != null) && m_session.isValid());
+		return (m_session != null);
 	}
 		
 	private Properties m_params = new Properties();

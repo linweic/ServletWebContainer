@@ -52,6 +52,7 @@ class MySession implements HttpSession {
 	 */
 	public long getLastAccessedTime() {
 		// TODO Auto-generated method stub
+		/*
 		String dateValue = WorkerThread.headerLines.get("Date").get(0);
 		SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern("EEE, dd MMM yyyy HH:mm:ss z");
@@ -64,6 +65,9 @@ class MySession implements HttpSession {
 			e.printStackTrace();
 		} 
 		return date.getTime();
+		*/
+		long time = (long) getAttribute("Last-Accessed");
+		return time;
 	}
 
 	/* (non-Javadoc)

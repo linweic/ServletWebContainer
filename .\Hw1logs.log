@@ -34739,3 +34739,688 @@ CONTENT-TYPE: text/html
 if committed: false
 if committed: true
 current socket is closed.
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+demo:servlets.DemoServlet
+testConfig:servlets.ConfigTestServlet
+	TestParam:1776
+extraServlet:servlets.ExtraServlet
+init:servlets.InitParamServlet
+	TestParam:1776
+session1:servlets.SessionServlet1
+testResponse:servlets.ResponseTestServlet
+session2:servlets.SessionServlet2
+errorServlet:servlets.ErrorServlet
+session3:servlets.SessionServlet3
+cookie2:servlets.CookieServlet2
+cookie3:servlets.CookieServlet3
+cookie1:servlets.CookieServlet1
+testSession:servlets.SessionTestServlet
+testContext:servlets.ContextTestServlet
+testRequest:servlets.RequestTestServlet
+extraServlet2:servlets.ExtraServlet2
+--------
+webmaster:yourname@seas.upenn.edu
+display-name:
+		Some servlets you can use to test your application server
+    
+--------
+demo:/demo/123/*
+testConfig:/testConfig
+extraServlet:/extraServlet
+init:/init
+session1:/session1
+testResponse:/testResponse
+session2:/session2
+session3:/session3
+errorServlet:/errorServlet2
+cookie2:/cookie2
+cookie3:/cookie3
+cookie1:/cookie1
+testSession:/testSession
+testContext:/testContext
+testRequest:/testRequest
+extraServlet2:/extraServlet2
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+demo:servlets.DemoServlet
+testConfig:servlets.ConfigTestServlet
+	TestParam:1776
+extraServlet:servlets.ExtraServlet
+init:servlets.InitParamServlet
+	TestParam:1776
+session1:servlets.SessionServlet1
+testResponse:servlets.ResponseTestServlet
+session2:servlets.SessionServlet2
+errorServlet:servlets.ErrorServlet
+session3:servlets.SessionServlet3
+cookie2:servlets.CookieServlet2
+cookie3:servlets.CookieServlet3
+cookie1:servlets.CookieServlet1
+testSession:servlets.SessionTestServlet
+testContext:servlets.ContextTestServlet
+testRequest:servlets.RequestTestServlet
+extraServlet2:servlets.ExtraServlet2
+--------
+webmaster:yourname@seas.upenn.edu
+display-name:
+		Some servlets you can use to test your application server
+    
+--------
+demo:/demo/123/*
+testConfig:/testConfig
+extraServlet:/extraServlet
+init:/init
+session1:/session1
+testResponse:/testResponse
+session2:/session2
+session3:/session3
+errorServlet:/errorServlet2
+cookie2:/cookie2
+cookie3:/cookie3
+cookie1:/cookie1
+testSession:/testSession
+testContext:/testContext
+testRequest:/testRequest
+extraServlet2:/extraServlet2
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:GET /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Connection: keep-alive
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+GET
+/demo/123/45
+HTTP/1.1
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+fb8c39dd-3651-4b4c-bfa6-48eb50a22b20
+strings[0] is GET
+CONTENT-LENGTH: 231
+SET-COOKIE: JSESSIONID=fb8c39dd-3651-4b4c-bfa6-48eb50a22b20; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:41:15 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:POST /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Referer: http://localhost:8080/demo/123/45
+current header line:Connection: keep-alive
+current header line:Content-Type: application/x-www-form-urlencoded
+current header line:Content-Length: 30
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+CONTENT-LENGTH:[30]
+REFERER:[http://localhost:8080/demo/123/45]
+CONTENT-TYPE:[application/x-www-form-urlencoded]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+POST
+/demo/123/45
+HTTP/1.1
+content length is 30
+---mesg body----
+buffered reader is ready.
+firstname=Linwei&lastname=Chen
+------
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+122cf721-aa40-49b9-8e00-58f1f5a5f0b4
+strings[0] is POST
+POST suport...
+firstname	Linwei
+lastname	Chen
+CONTENT-LENGTH: 95
+SET-COOKIE: JSESSIONID=122cf721-aa40-49b9-8e00-58f1f5a5f0b4; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:41:21 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+demo:servlets.DemoServlet
+testConfig:servlets.ConfigTestServlet
+	TestParam:1776
+extraServlet:servlets.ExtraServlet
+init:servlets.InitParamServlet
+	TestParam:1776
+session1:servlets.SessionServlet1
+testResponse:servlets.ResponseTestServlet
+session2:servlets.SessionServlet2
+errorServlet:servlets.ErrorServlet
+session3:servlets.SessionServlet3
+cookie2:servlets.CookieServlet2
+cookie3:servlets.CookieServlet3
+cookie1:servlets.CookieServlet1
+testSession:servlets.SessionTestServlet
+testContext:servlets.ContextTestServlet
+testRequest:servlets.RequestTestServlet
+extraServlet2:servlets.ExtraServlet2
+--------
+webmaster:yourname@seas.upenn.edu
+display-name:
+		Some servlets you can use to test your application server
+    
+--------
+demo:/demo/123/*
+testConfig:/testConfig
+extraServlet:/extraServlet
+init:/init
+session1:/session1
+testResponse:/testResponse
+session2:/session2
+session3:/session3
+errorServlet:/errorServlet2
+cookie2:/cookie2
+cookie3:/cookie3
+cookie1:/cookie1
+testSession:/testSession
+testContext:/testContext
+testRequest:/testRequest
+extraServlet2:/extraServlet2
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:GET /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Connection: keep-alive
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+GET
+/demo/123/45
+HTTP/1.1
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+d9b6e0ea-7eda-4df0-b898-ea6b58ef1d9e
+strings[0] is GET
+CONTENT-LENGTH: 231
+SET-COOKIE: JSESSIONID=d9b6e0ea-7eda-4df0-b898-ea6b58ef1d9e; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:47:11 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:POST /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Referer: http://localhost:8080/demo/123/45
+current header line:Connection: keep-alive
+current header line:Content-Type: application/x-www-form-urlencoded
+current header line:Content-Length: 30
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+CONTENT-LENGTH:[30]
+REFERER:[http://localhost:8080/demo/123/45]
+CONTENT-TYPE:[application/x-www-form-urlencoded]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+POST
+/demo/123/45
+HTTP/1.1
+content length is 30
+---mesg body----
+buffered reader is ready.
+firstname=Linwei&lastname=Chen
+------
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+383c6c05-8fa1-4354-b80f-602da71c1071
+strings[0] is POST
+POST suport...
+firstname	Linwei
+lastname	Chen
+CONTENT-LENGTH: 95
+SET-COOKIE: JSESSIONID=383c6c05-8fa1-4354-b80f-602da71c1071; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:47:27 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+demo:servlets.DemoServlet
+testConfig:servlets.ConfigTestServlet
+	TestParam:1776
+extraServlet:servlets.ExtraServlet
+init:servlets.InitParamServlet
+	TestParam:1776
+session1:servlets.SessionServlet1
+testResponse:servlets.ResponseTestServlet
+session2:servlets.SessionServlet2
+errorServlet:servlets.ErrorServlet
+session3:servlets.SessionServlet3
+cookie2:servlets.CookieServlet2
+cookie3:servlets.CookieServlet3
+cookie1:servlets.CookieServlet1
+testSession:servlets.SessionTestServlet
+testContext:servlets.ContextTestServlet
+testRequest:servlets.RequestTestServlet
+extraServlet2:servlets.ExtraServlet2
+--------
+webmaster:yourname@seas.upenn.edu
+display-name:
+		Some servlets you can use to test your application server
+    
+--------
+demo:/demo/123/*
+testConfig:/testConfig
+extraServlet:/extraServlet
+init:/init
+session1:/session1
+testResponse:/testResponse
+session2:/session2
+session3:/session3
+errorServlet:/errorServlet2
+cookie2:/cookie2
+cookie3:/cookie3
+cookie1:/cookie1
+testSession:/testSession
+testContext:/testContext
+testRequest:/testRequest
+extraServlet2:/extraServlet2
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:GET /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Connection: keep-alive
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+GET
+/demo/123/45
+HTTP/1.1
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+18a18a41-6a88-4baf-834f-ce1e5ab4a6a9
+strings[0] is GET
+CONTENT-LENGTH: 231
+SET-COOKIE: JSESSIONID=18a18a41-6a88-4baf-834f-ce1e5ab4a6a9; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:48:10 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:POST /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Referer: http://localhost:8080/demo/123/45
+current header line:Connection: keep-alive
+current header line:Content-Type: application/x-www-form-urlencoded
+current header line:Content-Length: 30
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+CONTENT-LENGTH:[30]
+REFERER:[http://localhost:8080/demo/123/45]
+CONTENT-TYPE:[application/x-www-form-urlencoded]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+POST
+/demo/123/45
+HTTP/1.1
+content length is 30
+---mesg body----
+buffered reader is ready.
+firstname=Linwei&lastname=Chen
+------
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+24201e42-f080-4a49-9283-2fd750adee5e
+strings[0] is POST
+POST suport...
+firstname	Linwei
+lastname	Chen
+CONTENT-LENGTH: 95
+SET-COOKIE: JSESSIONID=24201e42-f080-4a49-9283-2fd750adee5e; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:48:17 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:GET /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Connection: keep-alive
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+GET
+/demo/123/45
+HTTP/1.1
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+15a27455-8c98-4654-9133-f03caad64642
+strings[0] is GET
+CONTENT-LENGTH: 231
+SET-COOKIE: JSESSIONID=15a27455-8c98-4654-9133-f03caad64642; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:59:21 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:POST /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Referer: http://localhost:8080/demo/123/45
+current header line:Connection: keep-alive
+current header line:Content-Type: application/x-www-form-urlencoded
+current header line:Content-Length: 30
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+CONTENT-LENGTH:[30]
+REFERER:[http://localhost:8080/demo/123/45]
+CONTENT-TYPE:[application/x-www-form-urlencoded]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+POST
+/demo/123/45
+HTTP/1.1
+content length is 30
+---mesg body----
+buffered reader is ready.
+firstname=Linwei&lastname=Chen
+------
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+request does not have a session
+fbe714d0-ea94-4c4a-8503-5e5ebf5cd137
+strings[0] is POST
+POST suport...
+firstname	Linwei
+lastname	Chen
+CONTENT-LENGTH: 95
+SET-COOKIE: JSESSIONID=fbe714d0-ea94-4c4a-8503-5e5ebf5cd137; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 22:59:56 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+portNumber:8080
+root path:/home/cis455/workspace/HW1/www
+web.xml route:testweb/web.xml
+/home/cis455/workspace/HW1/testweb/web.xml
+demo:servlets.DemoServlet
+testConfig:servlets.ConfigTestServlet
+	TestParam:1776
+extraServlet:servlets.ExtraServlet
+init:servlets.InitParamServlet
+	TestParam:1776
+session1:servlets.SessionServlet1
+testResponse:servlets.ResponseTestServlet
+session2:servlets.SessionServlet2
+errorServlet:servlets.ErrorServlet
+session3:servlets.SessionServlet3
+cookie2:servlets.CookieServlet2
+cookie3:servlets.CookieServlet3
+cookie1:servlets.CookieServlet1
+testSession:servlets.SessionTestServlet
+testContext:servlets.ContextTestServlet
+testRequest:servlets.RequestTestServlet
+extraServlet2:servlets.ExtraServlet2
+--------
+webmaster:yourname@seas.upenn.edu
+display-name:
+		Some servlets you can use to test your application server
+    
+--------
+demo:/demo/123/*
+testConfig:/testConfig
+extraServlet:/extraServlet
+init:/init
+session1:/session1
+testResponse:/testResponse
+session2:/session2
+session3:/session3
+errorServlet:/errorServlet2
+cookie2:/cookie2
+cookie3:/cookie3
+cookie1:/cookie1
+testSession:/testSession
+testContext:/testContext
+testRequest:/testRequest
+extraServlet2:/extraServlet2
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:GET /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Connection: keep-alive
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+GET
+/demo/123/45
+HTTP/1.1
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+removing invalid session....
+check existant sessions...
+request does not have a session
+8f3649a9-4121-415b-a67a-f546f4783fff
+strings[0] is GET
+CONTENT-LENGTH: 231
+SET-COOKIE: JSESSIONID=8f3649a9-4121-415b-a67a-f546f4783fff; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 23:13:04 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
+Successfully get socket
+got input stream
+Prepare to start process request.
+intial line:POST /demo/123/45 HTTP/1.1
+current header line:Host: localhost:8080
+current header line:User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+current header line:Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+current header line:Accept-Language: en-US,en;q=0.5
+current header line:Accept-Encoding: gzip, deflate
+current header line:Referer: http://localhost:8080/demo/123/45
+current header line:Connection: keep-alive
+current header line:Content-Type: application/x-www-form-urlencoded
+current header line:Content-Length: 30
+ACCEPT-ENCODING:[gzip,  deflate]
+ACCEPT-ENCODING:[gzip,  deflate]
+HOST:[localhost:8080]
+USER-AGENT:[Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0]
+CONNECTION:[keep-alive]
+CONTENT-LENGTH:[30]
+REFERER:[http://localhost:8080/demo/123/45]
+CONTENT-TYPE:[application/x-www-form-urlencoded]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT:[text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+ACCEPT-LANGUAGE:[en-US, en;q=0.5]
+finished parsing
+POST
+/demo/123/45
+HTTP/1.1
+content length is 30
+---mesg body----
+buffered reader is ready.
+firstname=Linwei&lastname=Chen
+------
+Requested url is: /demo/123/45
+url pattern is: /demo/123/*
+demo
+There is a mapping...
+removing invalid session....
+check existant sessions...
+8f3649a9-4121-415b-a67a-f546f4783fff
+strings[0] is POST
+POST suport...
+firstname	Linwei
+lastname	Chen
+CONTENT-LENGTH: 95
+SET-COOKIE: JSESSIONID=8f3649a9-4121-415b-a67a-f546f4783fff; Max-Age=-1; Secure=false; Version=0
+DATE: Fri, 13 Nov 2015 23:13:12 GMT
+CONTENT-TYPE: text/html
+if committed: false
+if committed: true
+current socket is closed.
