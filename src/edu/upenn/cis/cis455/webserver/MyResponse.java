@@ -30,6 +30,7 @@ public class MyResponse implements HttpServletResponse {
 	 * @see javax.servlet.http.HttpServletResponse#addCookie(javax.servlet.http.Cookie)
 	 */
 	private Map<String, List<String>> responseHeaders;
+	private PrintWriter pw; 
 	private int statusCode;
 	private int bufferSize;
 	private StringBuffer buffer;
@@ -38,6 +39,7 @@ public class MyResponse implements HttpServletResponse {
 	public MyResponse(){
 		committed = false;
 		responseHeaders = new HashMap<String, List<String>>();
+		pw = WorkerThread.outstandingResponse;
 	}
 	private String transferDate(long arg0){
 		Date date = new Date(arg0);
@@ -296,7 +298,7 @@ public class MyResponse implements HttpServletResponse {
 			return null;
 		}
 		else{
-			PrintWriter pw = WorkerThread.outstandingResponse;
+			//PrintWriter pw = WorkerThread.outstandingResponse;
 			StringBuffer statusLine = new StringBuffer(WorkerThread.httpVersion);
 			statusLine = statusLine.append(" 200 OK");
 			pw.println(statusLine);
@@ -312,11 +314,14 @@ public class MyResponse implements HttpServletResponse {
 					headerLine.append(value).append(", ");
 				}
 				String line = headerLine.substring(0,headerLine.length()-2);
-				logger.debug(line);
+				logger.debug(line); 
 				pw.println(line);
 			}
-			pw.println("\r\n");
+			pw.print("\r\n");
+			//committed = true;
 			//flushBuffer();
+			//committed = false;
+			pw.flush();
 			return pw;
 		}
 	}
@@ -397,12 +402,14 @@ public class MyResponse implements HttpServletResponse {
 			logger.info("response has already been committed.");
 			throw new IllegalStateException();
 		}
+		/*
 		else if(!responseHeaders.containsKey("Content-Length".toUpperCase())&&!responseHeaders.containsKey("Date".toUpperCase())){
 			logger.info("response does not written content-length and date");
 			throw new IllegalStateException();
 		}
+		*/
 		else{
-			getWriter().flush();
+			pw.flush();
 			committed = true;
 		}
 	}

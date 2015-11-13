@@ -49,7 +49,9 @@ public class HttpServer {
 				m_state = 6;
 			} else if (qName.compareTo("servlet") == 0){
 				m_state = 7;
-			}
+			} else if (qName.compareTo("web-app") == 0) {
+				m_state = 22;
+			} 
 		}
 		public void characters(char[] ch, int start, int length) {
 			String value = new String(ch, start, length);
@@ -89,6 +91,8 @@ public class HttpServer {
 				p.put(m_paramName, value);
 				m_paramName = null;
 				m_state = 0;
+			} else if (m_state == 22){
+				m_contextParams.put("display-name", value);
 			}
 		}
 		private int m_state = 0;
@@ -167,17 +171,25 @@ public class HttpServer {
 	    logger.info("web.xml route:"+xmlPath);
 
 	    h = parseWebdotxml(xmlPath);
-	    /*
+	    
 	    for(String k:h.m_servlets.keySet()){
-	    	logger.info(k);
+	    	logger.info(k+":"+h.m_servlets.get(k));
+	    	HashMap<String,String> servletParams = h.m_servletParams.get(k);
+	    	if(servletParams!=null){
+	    		for(String name: servletParams.keySet()){
+	    			logger.info("\t"+name+":"+servletParams.get(name));
+	    		}
+	    	}
 	    }
+	    logger.info("--------");
 	    for(String k: h.m_contextParams.keySet()){
 	    	logger.info(k + ":" + h.m_contextParams.get(k));
 	    }
+	    logger.info("--------");
 	    for(String k: h.m_servletsMapping.keySet()){
 	    	logger.info(k + ":" + h.m_servletsMapping.get(k));
 	    }
-	    */
+	    
 	    configs = new HashMap<String, MyConfig>();
 	    context = createContext(h);
 	    servlets = createServlets(h, context);
@@ -193,7 +205,7 @@ public class HttpServer {
 		}
 		System.out.println("Connecting...");
 		LinkedList<Socket> deque = new LinkedList<Socket>();
-		int sizeOfQueue = 100;
+		int sizeOfQueue = 10;
 		int sizeOfPool = 10;
 		/*start the thread pool*/
 		ThreadPool tp = new ThreadPool(deque, sizeOfPool, rootPath);

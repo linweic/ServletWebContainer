@@ -95,7 +95,15 @@ class MyRequest implements HttpServletRequest {
 	public String getHeader(String arg0) {
 		// TODO Auto-generated method stub
 		//arg0 = arg0.toUpperCase();
-		if(getAttribute(arg0)!=null) return (String) getAttribute(arg0);
+		if(getAttribute(arg0)!=null) {
+			ArrayList<String> valueList = (ArrayList<String>) getAttribute(arg0);
+			StringBuffer sb = new StringBuffer();
+			for(String value: valueList){
+				sb.append(value).append(", ");
+			}
+			String headerField = sb.substring(0,sb.length()-2).toString();
+			return headerField;
+		}
 		return null;
 	}
 
@@ -150,7 +158,20 @@ class MyRequest implements HttpServletRequest {
 	public String getPathInfo() {
 		// TODO Auto-generated method stub
 		String servletPath = getServletPath();
-		String pathInfo = ((String)getAttribute("requestURL")).substring(servletPath.length());
+		HashMap<String, String> mapping = (HashMap<String, String>) getAttribute("ServletMapping");
+		Collection<String> patterns = mapping.values();
+		String pathInfo = null;
+		for(String pattern:patterns){
+			if(pattern.charAt(0)!='/'){
+				pattern = "/".concat(pattern);
+			}
+			if(pattern.startsWith(servletPath)){
+				//logger.debug("matched pattern is: "+ pattern);
+				pathInfo = pattern.substring(servletPath.length());
+				if(pathInfo.equals("/*")) pathInfo = "/random";
+			}
+		}
+		//String pathInfo = ((String)getAttribute("requestURL")).substring(servletPath.length());
 		return pathInfo;
 	}
 
@@ -254,7 +275,9 @@ class MyRequest implements HttpServletRequest {
 		StringBuffer sb = new StringBuffer();
 		String method = getMethod();
 		String server = ((ArrayList<String>)getAttribute("Host")).get(0);
+		logger.debug("[getRequestURL] server is "+ server);
 		String serverPath = getRequestURI();
+		logger.debug("[getRequestURL] serverpath is "+ server);
 		sb = sb.append(method).append(" ").append(server).append(serverPath);
 		return sb;
 	}

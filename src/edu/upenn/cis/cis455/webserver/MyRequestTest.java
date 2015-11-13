@@ -88,7 +88,6 @@ public class MyRequestTest {
 		assertEquals(1,request.getIntHeader("INTheaDer1"));
 		assertEquals(1,request.getIntHeader("intheader1"));
 		assertEquals(-1,request.getIntHeader("intHeaderrr"));
-		request.getHeader("intHeader2");
 	}
 
 	@Test
@@ -109,7 +108,7 @@ public class MyRequestTest {
 		mapping.put("servlet3", "/calculator/*");
 		mapping.put("servlet4", "calculator/a/*");
 		request.setAttribute("requestURL","/calculator/a/b/test");
-		assertTrue("/b/test".equals(request.getPathInfo()));
+		assertTrue("/random".equals(request.getPathInfo()));
 	}
 
 	@Test

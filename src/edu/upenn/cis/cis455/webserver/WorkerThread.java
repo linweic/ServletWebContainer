@@ -104,7 +104,7 @@ public class WorkerThread extends Thread{
 			if(urlPattern.charAt(0) == '*'){
 				int suffixLength = urlPattern.length();
 				String suffix = urlPattern.substring(1, suffixLength);
-				if (line.length() >= suffix.length() && line.substring(line.length()-suffixLength).equals(suffix)) return k;
+				if (line.length() >= suffix.length() && line.endsWith(suffix)) return k;
 			}
 		}		
 		return null;
@@ -121,7 +121,7 @@ public class WorkerThread extends Thread{
 		}
 		return null;
 	}
-	public void startServlet(String[] strings, String servletName) throws ServletException, IOException {
+	public void startServlet(String[] strings, String servletName, StringBuffer message) throws ServletException, IOException {
 		/*find JSESSIONID*/
 		MySession currentSession = (MySession) isSessionExist();
 		MyRequest request = new MyRequest(currentSession);
@@ -144,12 +144,30 @@ public class WorkerThread extends Thread{
 		Cookie cookie = new Cookie("JSESSIONID",hs.getId());
 		response.addCookie(cookie);
 		HttpServlet servlet = HttpServer.servlets.get(servletName);
-		for(int i = 2; i<strings.length-2; i+=2){
-			request.setParameter(strings[i],strings[i+1]);
+		logger.info("strings[0] is "+ strings[0]);
+		if(strings[0].equals("GET")){
+			for(int i = 2; i<strings.length-2; i+=2){
+				request.setParameter(strings[i],strings[i+1]);
+			}
+		}
+		else if(strings[0].equals("POST")){
+			logger.info("POST suport...");
+			//logger.debug(message);
+			String[] querys = message.toString().split("\\?|&|=|;|\\s");
+			//logger.debug(querys.length);
+			for(int i = 0; i<querys.length-1; i+=2){
+				logger.debug(querys[i]+"\t"+querys[i+1]);
+				request.setParameter(querys[i],querys[i+1]);
+			}
 		}
 		if(strings[0].equals("GET")||strings[0].equals("POST")){
 			request.setMethod(strings[0]);
 			servlet.service(request,response);
+			logger.debug("if committed: "+ response.isCommitted());
+			//if(response.isCommitted()==false) response.flushBuffer();
+			//logger.debug("if committed: "+ response.isCommitted());
+			response.flushBuffer();
+			logger.debug("if committed: "+ response.isCommitted());
 		}
 	}
 	
@@ -159,6 +177,7 @@ public class WorkerThread extends Thread{
 		ArrayList<String> lastValue = new ArrayList<String>();
 		String currentLine;
 		while(!(currentLine=bf.readLine()).trim().equals("")){ //read header lines before blank line
+		//while((currentLine=bf.readLine())!=null){
 			logger.debug("current header line:"+currentLine);
 			String pattern = "(.*):\\s+(.*)";
 			Matcher m = regexMatcher(pattern, currentLine);
@@ -167,16 +186,37 @@ public class WorkerThread extends Thread{
 				if(headerLines.containsKey(lastKey)){
 					lastValue = headerLines.get(lastKey);
 				}
-				else lastValue.clear();
-				String[] values = m.group(2).split(";");
-				for(String s: values) lastValue.add(s);
-				headerLines.put(lastKey, lastValue);
+				else lastValue = new ArrayList<String>();
+				if(m.group(2).contains("GMT")){
+					if(!m.group(2).trim().contains("GMT\\s+,")){
+						//only one date value in the header field
+						lastValue.add(m.group(2));
+					}
+					else{
+						String[] values = m.group(2).split("GMT\\s+,");
+						for(String value: values){
+							if(value.trim().endsWith("GMT")) lastValue.add(value.trim());
+							else{
+								value = value.trim() +" GMT";
+								lastValue.add(value);
+							}
+						}
+					}
+					headerLines.put(lastKey, lastValue);
+				}
+				else{
+					String[] values = m.group(2).split(",");
+					for(String s: values) lastValue.add(s);
+					headerLines.put(lastKey, lastValue);
+					//logger.debug("put "+ lastKey+" "+lastValue);
+				}
+				//logger.debug("put "+ lastKey+" "+lastValue);
 			}
 			else{ //if match a line starts with space or tab, append the value to the previous value of header line
 				pattern = "(\\s+|\\t+)(.*)";
 				m = regexMatcher(pattern,currentLine);
 				if(m.find()){
-					String[] values = m.group(2).split(";");
+					String[] values = m.group(2).split(",");
 					for(String s: values ) lastValue.add(s);
 					if(lastKey != null)headerLines.put(lastKey, lastValue);
 					else return null;
@@ -209,13 +249,37 @@ public class WorkerThread extends Thread{
 			headerLines = parseHeaderLines(incomingStuff);
 			String[] strings = initialLine.split("\\?|&|=|;|\\s");
 			for (String s: strings) logger.info(s);
+			if(strings[0].equals("POST")){
+				String contentLength = headerLines.get("CONTENT-LENGTH").get(0);
+				int length = Integer.valueOf(contentLength);
+				logger.debug("content length is "+ length);
+				logger.debug("---mesg body----");
+				while(incomingStuff.ready()){
+					logger.debug("buffered reader is ready.");
+					int i=0;
+					while(i<length){
+						//logger.debug("start");
+						char character = (char)incomingStuff.read();
+						messageBody.append(character);
+						i++;
+						//logger.debug("over");
+					}
+					logger.debug(messageBody);
+					logger.debug("------");
+				}
+			}
 			httpVersion = initialLine.substring(initialLine.length()-8, initialLine.length());
 			url = strings[1];
+			if(url.trim().startsWith("http://")){
+				url = url.substring(8);
+				int index = url.indexOf("/");
+				url = url.substring(index);
+			}
 			String servletName = checkMapping(HttpServer.h, url);
 			logger.info(servletName);
 			if(servletName != null){
 				logger.info("There is a mapping...");
-				startServlet(strings, servletName);
+				startServlet(strings, servletName, messageBody);
 				return;
 			}
 			logger.info("There is not a mapping...");
@@ -441,18 +505,25 @@ public class WorkerThread extends Thread{
 			logger.info("Successfully get socket");
 			/*successfully get the socket, now parse the request */
 			try{
-				incomingRequest = new BufferedReader(new InputStreamReader(current.getInputStream()));
+				incomingRequest = new BufferedReader(new InputStreamReader(current.getInputStream(),StandardCharsets.UTF_8));
 			}catch(IOException e){
 				logger.error("IOException occurs when getInputStream() method is called");
 			}
 			logger.info("got input stream");
 			try{
-				outstandingResponse = new PrintWriter(new OutputStreamWriter(current.getOutputStream(),StandardCharsets.ISO_8859_1),false);
+				outstandingResponse = new PrintWriter(new OutputStreamWriter(current.getOutputStream(),StandardCharsets.ISO_8859_1),true);
 			}catch(IOException e){
 				logger.error("IOExcetption occurs when getOutputStream() method is called.");
 			}
 			logger.info("Prepare to start process request.");
 			processRequest(incomingRequest);
+			try {
+				current.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			logger.info("current socket is closed.");
 		}
 	}
 	public static void main(String[] args) {
